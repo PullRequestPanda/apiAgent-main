@@ -1,0 +1,258 @@
+[
+  {
+    "name": "用户登录",
+    "description": "用户登录获取访问令牌",
+    "method": "POST",
+    "endpoint": "/api/v1/auth/login",
+    "params": [
+      { "name": "username", "type": "string", "required": true, "description": "用户名" },
+      { "name": "password", "type": "string", "required": true, "description": "密码" }
+    ],
+    "response": {
+      "token": "string, 访问令牌",
+      "userId": "string, 用户ID",
+      "expiresIn": "number, 令牌过期时间"
+    }
+  },
+  {
+    "name": "获取用户信息",
+    "description": "根据用户ID获取用户详细信息",
+    "method": "GET",
+    "endpoint": "/api/v1/users/{userId}",
+    "params": [
+      { "name": "userId", "type": "string", "required": true, "description": "用户ID（从登录接口获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌（从登录接口获取）" }
+    ],
+    "response": {
+      "userId": "string, 用户ID",
+      "username": "string, 用户名",
+      "email": "string, 邮箱",
+      "department": "string, 部门",
+      "role": "string, 角色"
+    }
+  },
+  {
+    "name": "获取部门项目列表",
+    "description": "根据部门ID获取该部门的所有项目",
+    "method": "GET",
+    "endpoint": "/api/v1/departments/{departmentId}/projects",
+    "params": [
+      { "name": "departmentId", "type": "string", "required": true, "description": "部门ID（从用户信息获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "projects": [
+        {
+          "projectId": "string, 项目ID",
+          "projectName": "string, 项目名称",
+          "status": "string, 项目状态"
+        }
+      ]
+    }
+  },
+  {
+    "name": "获取项目详情",
+    "description": "根据项目ID获取项目详细信息",
+    "method": "GET",
+    "endpoint": "/api/v1/projects/{projectId}",
+    "params": [
+      { "name": "projectId", "type": "string", "required": true, "description": "项目ID（从项目列表获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "projectId": "string, 项目ID",
+      "projectName": "string, 项目名称",
+      "description": "string, 项目描述",
+      "managerId": "string, 项目经理ID",
+      "startDate": "string, 开始日期",
+      "endDate": "string, 结束日期"
+    }
+  },
+  {
+    "name": "获取项目任务列表",
+    "description": "根据项目ID获取该项目的所有任务",
+    "method": "GET",
+    "endpoint": "/api/v1/projects/{projectId}/tasks",
+    "params": [
+      { "name": "projectId", "type": "string", "required": true, "description": "项目ID（从项目列表或项目详情获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "tasks": [
+        {
+          "taskId": "string, 任务ID",
+          "taskName": "string, 任务名称",
+          "assignedTo": "string, 指派人ID",
+          "status": "string, 任务状态"
+        }
+      ]
+    }
+  },
+  {
+    "name": "获取任务详情",
+    "description": "根据任务ID获取任务详细信息",
+    "method": "GET",
+    "endpoint": "/api/v1/tasks/{taskId}",
+    "params": [
+      { "name": "taskId", "type": "string", "required": true, "description": "任务ID（从任务列表获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "taskId": "string, 任务ID",
+      "taskName": "string, 任务名称",
+      "description": "string, 任务描述",
+      "assignedTo": "string, 指派人ID",
+      "startDate": "string, 开始时间",
+      "dueDate": "string, 截止时间",
+      "priority": "string, 优先级"
+    }
+  },
+  {
+    "name": "获取任务评论",
+    "description": "根据任务ID获取该任务的所有评论",
+    "method": "GET",
+    "endpoint": "/api/v1/tasks/{taskId}/comments",
+    "params": [
+      { "name": "taskId", "type": "string", "required": true, "description": "任务ID（从任务列表或任务详情获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "comments": [
+        {
+          "commentId": "string, 评论ID",
+          "authorId": "string, 评论人ID",
+          "content": "string, 评论内容",
+          "createdAt": "string, 评论时间"
+        }
+      ]
+    }
+  },
+  {
+    "name": "获取用户权限",
+    "description": "根据用户ID获取用户的权限列表",
+    "method": "GET",
+    "endpoint": "/api/v1/users/{userId}/permissions",
+    "params": [
+      { "name": "userId", "type": "string", "required": true, "description": "用户ID（从登录或用户信息获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "permissions": [
+        {
+          "permissionId": "string, 权限ID",
+          "permissionName": "string, 权限名称",
+          "resource": "string, 资源类型"
+        }
+      ]
+    }
+  },
+  {
+    "name": "获取部门成员",
+    "description": "根据部门ID获取该部门的所有成员",
+    "method": "GET",
+    "endpoint": "/api/v1/departments/{departmentId}/members",
+    "params": [
+      { "name": "departmentId", "type": "string", "required": true, "description": "部门ID（从用户信息获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "members": [
+        {
+          "userId": "string, 用户ID",
+          "username": "string, 用户名",
+          "role": "string, 角色"
+        }
+      ]
+    }
+  },
+  {
+    "name": "获取项目报告",
+    "description": "根据项目ID生成项目报告",
+    "method": "GET",
+    "endpoint": "/api/v1/projects/{projectId}/report",
+    "params": [
+      { "name": "projectId", "type": "string", "required": true, "description": "项目ID（从项目列表获取）" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" },
+      { "name": "reportType", "type": "string", "required": false, "description": "报告类型（progress/summary/detail）" }
+    ],
+    "response": {
+      "reportId": "string, 报告ID",
+      "projectId": "string, 项目ID",
+      "reportType": "string, 报告类型",
+      "content": "object, 报告内容"
+    }
+  },
+  {
+    "name": "创建新用户",
+    "description": "注册一个新用户账号",
+    "method": "POST",
+    "endpoint": "/api/v1/users",
+    "params": [
+      { "name": "username", "type": "string", "required": true, "description": "用户名" },
+      { "name": "password", "type": "string", "required": true, "description": "密码" },
+      { "name": "email", "type": "string", "required": true, "description": "邮箱地址" },
+      { "name": "department", "type": "string", "required": false, "description": "所属部门" }
+    ],
+    "response": {
+      "userId": "string, 新用户ID",
+      "username": "string, 用户名",
+      "email": "string, 邮箱",
+      "department": "string, 部门"
+    }
+  },
+  {
+    "name": "创建项目",
+    "description": "新建一个项目",
+    "method": "POST",
+    "endpoint": "/api/v1/projects",
+    "params": [
+      { "name": "projectName", "type": "string", "required": true, "description": "项目名称" },
+      { "name": "description", "type": "string", "required": false, "description": "项目描述" },
+      { "name": "managerId", "type": "string", "required": true, "description": "项目经理ID" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "projectId": "string, 项目ID",
+      "projectName": "string, 项目名称",
+      "description": "string, 项目描述",
+      "managerId": "string, 项目经理ID"
+    }
+  },
+  {
+    "name": "更新用户信息",
+    "description": "根据用户ID更新用户的基本信息",
+    "method": "PUT",
+    "endpoint": "/api/v1/users/{userId}",
+    "params": [
+      { "name": "userId", "type": "string", "required": true, "description": "用户ID" },
+      { "name": "email", "type": "string", "required": false, "description": "新邮箱地址" },
+      { "name": "department", "type": "string", "required": false, "description": "新部门" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "userId": "string, 用户ID",
+      "username": "string, 用户名",
+      "email": "string, 邮箱",
+      "department": "string, 部门"
+    }
+  },
+  {
+    "name": "修改项目详情",
+    "description": "根据项目ID修改项目信息",
+    "method": "PUT",
+    "endpoint": "/api/v1/projects/{projectId}",
+    "params": [
+      { "name": "projectId", "type": "string", "required": true, "description": "项目ID" },
+      { "name": "projectName", "type": "string", "required": false, "description": "项目名称" },
+      { "name": "description", "type": "string", "required": false, "description": "项目描述" },
+      { "name": "managerId", "type": "string", "required": false, "description": "项目经理ID" },
+      { "name": "token", "type": "string", "required": true, "description": "访问令牌" }
+    ],
+    "response": {
+      "projectId": "string, 项目ID",
+      "projectName": "string, 项目名称",
+      "description": "string, 项目描述",
+      "managerId": "string, 项目经理ID"
+    }
+  }
+] 
