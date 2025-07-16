@@ -3,7 +3,7 @@
     "name": "获取员工项目信息",
     "description": "根据员工ID获取员工项目组及请假加班信息",
     "method": "GET",
-    "endpoint": "http://172.24.6.47/api/v1/pageInfo4LOM",
+    "endpoint": "/api/v1/pageInfo4LOM",
     "params": [
       { "name": "staffId", "type": "string", "required": false, "description": "员工ID" }
     ],
@@ -31,7 +31,7 @@
     "name": "提交请假申请",
     "description": "提交员工的请假信息",
     "method": "POST",
-    "endpoint": "http://172.24.6.47/api/v1/newleavesxiaotian",
+    "endpoint": "/api/v1/newleavesxiaotian",
     "params": [
       { "name": "userId", "type": "string", "required": false, "description": "员工ID" },
       { "name": "userName", "type": "string", "required": false, "description": "员工姓名" },
@@ -62,7 +62,7 @@
     "name": "提交加班申请",
     "description": "提交员工的加班申请",
     "method": "POST",
-    "endpoint": "http://172.24.6.47/api/v1/newovertimesubmitxiaotian",
+    "endpoint": "/api/v1/newovertimesubmitxiaotian",
     "params": [
       { "name": "userId", "type": "string", "required": false, "description": "员工ID" },
       { "name": "userName", "type": "string", "required": false, "description": "员工姓名" },
@@ -123,7 +123,7 @@
     "name": "查询员工历史加班记录",
     "description": "查询员工历史加班记录，所有字段必传",
     "method": "POST",
-    "endpoint": "http://172.24.6.47/api/v1/overtimehistory",
+    "endpoint": "/api/v1/overtimehistory",
     "params": [
       { "name": "projectId", "type": "integer", "required": true, "description": "项目ID（0为所有项目）" },
       { "name": "startTime", "type": "string", "required": true, "description": "开始时间（格式YYYYMMDD）" },
