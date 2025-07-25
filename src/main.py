@@ -85,7 +85,7 @@ async def create_plan(request: RequestBody):
     try:
         # 1. 查询改写
         print(f"接收到原始请求: '{user_query}'，正在进行查询改写...")
-        rewritten_query = await query_rewriter_chain.ainvoke({"user_query": user_query})
+        rewritten_query = query_rewriter_chain.invoke({"user_query": user_query})
         print(f"改写后的查询: '{rewritten_query}'")
 
         # 2. 调用TaskPlanner

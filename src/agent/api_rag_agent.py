@@ -9,7 +9,7 @@ from loguru import logger
 
 from src.vector_store.vector_stores import VectorStoreManager
 from src.utils.llm_factory import LLMFactory
-from src.retrieval.hybrid_retriever import ApiRetriever # Updated import
+from src.retrieval.api_retriever import ApiRetriever # Updated import
 
 class ApiRagAgent:
     def __init__(self):

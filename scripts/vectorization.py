@@ -57,4 +57,12 @@ def vectorize_apis(vsm: VectorStoreManager):
     vsm.create_vector_store(docs, collection_name='api_docs')
     print("单个API向量库[api_docs]创建/更新成功。")
 
-if __name__ == "__main__":    # 初始化向量存储管理器    embeddings = LLMFactory.create_embeddings(provider='dashscope')    vsm = VectorStoreManager(embeddings=embeddings)    # 分别执行两种向量化流程    vectorize_apis(vsm)    print("\n所有向量化任务完成。")
+if __name__ == "__main__":
+    # 初始化向量存储管理器
+    embeddings = LLMFactory.create_embeddings(provider='dashscope')
+    vsm = VectorStoreManager(embeddings=embeddings)
+
+    # 执行API向量化流程
+    vectorize_apis(vsm)
+
+    print("\n所有向量化任务完成。")

@@ -41,7 +41,7 @@ class Settings(BaseSettings):
     
     # 阿里云百炼配置
     dashscope_api_key: Optional[str] = Field(
-        default="sk-a738f0dad60e459e9d8f276c260ee7bb",
+        default=None,
         description="阿里云百炼API密钥"
     )
     dashscope_text_model: str = Field(
@@ -72,10 +72,6 @@ class Settings(BaseSettings):
         default=5,
         description="检索返回的文档数量"
     )
-    similarity_threshold: float = Field(
-        default=0.4,
-        description="相似度阈值（距离，越低越相似）"
-    )
 
     # 重排序配置
     enable_reranking: bool = Field(
@@ -93,14 +89,6 @@ class Settings(BaseSettings):
     rerank_final_k: int = Field(
         default=8,
         description="重排序后的最终文档数量"
-    )
-    rerank_score_threshold: float = Field(
-        default=0.1,
-        description="重排序后的相关度分数阈值，高于此值才被采纳"
-    )
-    bm25_high_confidence_score: float = Field(
-        default=2.0,
-        description="BM25检索的置信度分数，高于此值则直接采纳，跳过Reranker"
     )
 
     # 增强检索配置
@@ -156,12 +144,6 @@ class Settings(BaseSettings):
         
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
-        # 从环境变量获取API密钥
-        if not self.openai_api_key:
-            self.openai_api_key = os.getenv("OPENAI_API_KEY")
-        if not self.dashscope_api_key:
-            self.dashscope_api_key = os.getenv("DASHSCOPE_API_KEY")
         
         # 创建必要的目录
         os.makedirs(self.output_dir, exist_ok=True)
