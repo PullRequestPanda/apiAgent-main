@@ -1,154 +1,121 @@
 [
   {
     "name": "获取员工项目信息",
-    "description": "根据员工ID获取员工项目组及请假加班信息",
+    "description": "根据员工ID获取该员工当前所在的项目、汇报对象、项目经理等信息。",
     "method": "GET",
-    "endpoint": "/api/v1/pageInfo4LOM",
+    "endpoint": "/api/v1/employees/{staffId}/project",
     "params": [
-      { "name": "staffId", "type": "string", "required": false, "description": "员工ID" }
+      {
+        "name": "staffId",
+        "in": "path",
+        "description": "员工的唯一ID",
+        "required": true,
+        "type": "string"
+      }
     ],
     "response": {
-      "projectId": "string, 项目ID",
-      "projectName": "string, 项目名称",
-      "reportTo": "string, 汇报对象ID",
-      "projectManager": "string, 项目经理ID",
-      "leave_records": [
-        {
-          "leaveId": "string, 请假记录ID",
-          "type": "string, 请假类型",
-          "status": "string, 审批状态"
-        }
-      ],
-      "overtime_records": [
-        {
-          "overtimeId": "string, 加班记录ID",
-          "status": "string, 审批状态"
-        }
-      ]
+      "staffId": "s_123",
+      "projectId": "p_abc",
+      "projectName": "天元项目",
+      "reportTo": "张三",
+      "projectManager": "李四"
     }
   },
   {
     "name": "提交请假申请",
-    "description": "提交员工的请假信息",
+    "description": "员工提交请假申请，需要包含详细的请假信息。",
     "method": "POST",
-    "endpoint": "/api/v1/newleavesxiaotian",
+    "endpoint": "/api/v1/leaves",
     "params": [
-      { "name": "userId", "type": "string", "required": false, "description": "员工ID" },
-      { "name": "userName", "type": "string", "required": false, "description": "员工姓名" },
-      { "name": "staffType", "type": "string", "required": false, "description": "员工类型（如FTE）" },
-      { "name": "projectId", "type": "string", "required": false, "description": "项目ID" },
-      { "name": "projectName", "type": "string", "required": false, "description": "项目名称" },
-      { "name": "reportTo", "type": "string", "required": false, "description": "汇报对象ID" },
-      { "name": "projectManager", "type": "string", "required": false, "description": "项目经理ID" },
-      { "name": "onsiteManager", "type": "string", "required": false, "description": "现场经理ID（可为空）" },
-      { "name": "account", "type": "string", "required": false, "description": "账号/BU名称" },
-      { "name": "type", "type": "string", "required": true, "description": "请假类型（如ANNUAL_LEAVE）" },
-      { "name": "fromDate", "type": "string", "required": true, "description": "开始日期（格式YYYY-MM-DD）" },
-      { "name": "toDate", "type": "string", "required": true, "description": "结束日期（格式YYYY-MM-DD）" },
-      { "name": "leaveDays", "type": "string", "required": false, "description": "请假天数，可根据请假开始日期和结束日期计算" },
-      { "name": "startFromTime", "type": "string", "required": false, "description": "开始时间段起（默认0900）" },
-      { "name": "startToTime", "type": "string", "required": false, "description": "开始时间段止（默认1800）" },
-      { "name": "endFromTime", "type": "string", "required": false, "description": "结束时间段起（默认0900）" },
-      { "name": "endToTime", "type": "string", "required": false, "description": "结束时间段止（默认1800）" },
-      { "name": "reason", "type": "string", "required": true, "description": "请假原因" }
+      { "name": "userId", "in": "body", "description": "申请人ID", "required": true, "type": "string" },
+      { "name": "userName", "in": "body", "description": "申请人姓名", "required": true, "type": "string" },
+      { "name": "type", "in": "body", "description": "假期类型 (ANNUAL, SICK, PERSONAL)", "required": true, "type": "string" },
+      { "name": "fromDate", "in": "body", "description": "开始日期 (YYYY-MM-DD)", "required": true, "type": "string" },
+      { "name": "toDate", "in": "body", "description": "结束日期 (YYYY-MM-DD)", "required": true, "type": "string" },
+      { "name": "reason", "in": "body", "description": "请假事由", "required": true, "type": "string" }
     ],
     "response": {
-      "success": "boolean, 是否成功",
-      "leaveId": "string, 新创建的请假记录ID",
-      "status": "string, 当前状态（如PENDING）"
+      "success": true,
+      "leaveId": "leave_987"
     }
   },
   {
     "name": "提交加班申请",
-    "description": "提交员工的加班申请",
+    "description": "员工提交加班申请，需要包含详细的加班信息。",
     "method": "POST",
-    "endpoint": "/api/v1/newovertimesubmitxiaotian",
+    "endpoint": "/api/v1/overtimes",
     "params": [
-      { "name": "userId", "type": "string", "required": false, "description": "员工ID" },
-      { "name": "userName", "type": "string", "required": false, "description": "员工姓名" },
-      { "name": "staffType", "type": "string", "required": false, "description": "员工类型" },
-      { "name": "from", "type": "string", "required": true, "description": "加班开始时间（如1400）" },
-      { "name": "to", "type": "string", "required": true, "description": "加班结束时间（如1700）" },
-      { "name": "hours", "type": "string", "required": false, "description": "加班小时数，可根据加班开始时间和加班结束时间计算" },
-      { "name": "type", "type": "string", "required": false, "description": "加班类型，根据加班时间和加班日期推算" },
-      { "name": "reason", "type": "string", "required": true, "description": "加班原因" },
-      { "name": "overTimeDate", "type": "string", "required": true, "description": "加班日期（格式YYYY-MM-DD）" },
-      { "name": "compensationWay", "type": "string", "required": true, "description": "补偿方式（如SHIFT_LEAVE）" },
-      { "name": "projectId", "type": "string", "required": false, "description": "项目ID" },
-      { "name": "projectName", "type": "string", "required": false, "description": "项目名称" },
-      { "name": "reportTo", "type": "string", "required": false, "description": "汇报对象ID" },
-      { "name": "projectManager", "type": "string", "required": true, "description": "项目经理ID" },
-      { "name": "onsiteManager", "type": "string", "required": false, "description": "现场经理ID（可为空）" },
-      { "name": "account", "type": "string", "required": false, "description": "账号/BU名称" }
+      { "name": "userId", "in": "body", "description": "申请人ID", "required": true, "type": "string" },
+      { "name": "overtimeDate", "in": "body", "description": "加班日期 (YYYY-MM-DD)", "required": true, "type": "string" },
+      { "name": "hours", "in": "body", "description": "加班时长（小时）", "required": true, "type": "number" },
+      { "name": "reason", "in": "body", "description": "加班事由", "required": true, "type": "string" },
+      { "name": "compensationWay", "in": "body", "description": "补偿方式 (TIMEOFF, PAY)", "required": true, "type": "string" }
     ],
     "response": {
-      "success": "boolean, 是否成功",
-      "overtimeId": "string, 新创建的加班记录ID",
-      "status": "string, 当前状态（如PENDING）"
+      "success": true,
+      "overtimeId": "ot_654"
     }
   },
   {
-    "name": "查询员工历史请假记录",
-    "description": "查询员工历史请假记录，所有字段必传",
+    "name": "解锁用户",
+    "description": "通过邮箱地址解锁一个被锁定的用户账号。",
     "method": "POST",
-    "endpoint": "/api/v1/leavehistory",
+    "endpoint": "/api/v1/users/unlock",
     "params": [
-      { "name": "projectId", "type": "integer", "required": true, "description": "项目ID（0为所有项目）" },
-      { "name": "startTime", "type": "string", "required": true, "description": "开始时间（格式YYYYMMDD）" },
-      { "name": "endTime", "type": "string", "required": true, "description": "结束时间（格式YYYYMMDD）" },
-      { "name": "staffId", "type": "string", "required": true, "description": "员工ID" },
-      { "name": "leaveType", "type": "string", "required": true, "description": "请假类型（10表示全部）" },
-      { "name": "status", "type": "string", "required": true, "description": "请假状态（10表示全部）" },
-      { "name": "rowCount", "type": "integer", "required": true, "description": "返回记录条数" },
-      { "name": "pageIndex", "type": "integer", "required": true, "description": "页码" }
+      {
+        "name": "email",
+        "in": "body",
+        "description": "需要解锁的用户的邮箱地址",
+        "required": true,
+        "type": "string"
+      }
     ],
     "response": {
-      "total": "number, 符合条件的总记录数",
-      "pageIndex": "number, 当前页码",
-      "rowCount": "number, 本页记录数",
-      "records": [
-        {
-          "leaveId": "string, 请假记录ID",
-          "type": "string, 请假类型",
-          "fromDate": "string, 开始日期",
-          "toDate": "string, 结束日期",
-          "days": "number, 请假天数",
-          "status": "string, 审批状态（APPROVED/REJECTED/PENDING）",
-          "approver": "string, 审批人ID"
-        }
-      ]
+      "success": true,
+      "message": "用户解锁指令已发送"
     }
   },
   {
-    "name": "查询员工历史加班记录",
-    "description": "查询员工历史加班记录，所有字段必传",
-    "method": "POST",
-    "endpoint": "/api/v1/overtimehistory",
+    "name": "获取项目详情",
+    "description": "根据项目ID查询并返回一个项目的详细信息。",
+    "method": "GET",
+    "endpoint": "/api/v1/projects/{projectId}",
     "params": [
-      { "name": "projectId", "type": "integer", "required": true, "description": "项目ID（0为所有项目）" },
-      { "name": "startTime", "type": "string", "required": true, "description": "开始时间（格式YYYYMMDD）" },
-      { "name": "endTime", "type": "string", "required": true, "description": "结束时间（格式YYYYMMDD）" },
-      { "name": "staffId", "type": "string", "required": true, "description": "员工ID" },
-      { "name": "otType", "type": "string", "required": true, "description": "加班类型（4表示全部）" },
-      { "name": "applyFor", "type": "string", "required": true, "description": "补偿方式（3表示全部）" },
-      { "name": "status", "type": "string", "required": true, "description": "加班状态（7表示全部）" },
-      { "name": "rowCount", "type": "integer", "required": true, "description": "返回记录条数" },
-      { "name": "pageIndex", "type": "integer", "required": true, "description": "页码" }
+      {
+        "name": "projectId",
+        "in": "path",
+        "description": "项目的唯一ID",
+        "required": true,
+        "type": "string"
+      }
     ],
     "response": {
-      "total": "number, 符合条件的总记录数",
-      "pageIndex": "number, 当前页码",
-      "rowCount": "number, 本页记录数",
-      "records": [
-        {
-          "overtimeId": "string, 加班记录ID",
-          "date": "string, 加班日期",
-          "hours": "number, 加班小时数",
-          "type": "string, 加班类型",
-          "compensationWay": "string, 补偿方式",
-          "status": "string, 审批状态"
-        }
-      ]
+      "projectId": "p_123",
+      "projectName": "天元项目",
+      "projectManager": "李四",
+      "status": "进行中",
+      "startDate": "2023-01-01",
+      "endDate": "2025-12-31"
+    }
+  },
+  {
+    "name": "查询用户状态",
+    "description": "根据用户ID检查其账号当前的状态。",
+    "method": "GET",
+    "endpoint": "/api/v1/users/{userId}/status",
+    "params": [
+      {
+        "name": "userId",
+        "in": "path",
+        "description": "用户的唯一ID",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "response": {
+      "userId": "u_abc",
+      "status": "ACTIVE",
+      "lastLogin": "2025-07-18T12:00:00Z"
     }
   }
 ]

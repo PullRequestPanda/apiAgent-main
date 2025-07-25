@@ -73,8 +73,8 @@ class Settings(BaseSettings):
         description="检索返回的文档数量"
     )
     similarity_threshold: float = Field(
-        default=0.5,
-        description="相似度阈值"
+        default=0.4,
+        description="相似度阈值（距离，越低越相似）"
     )
 
     # 重排序配置
@@ -93,6 +93,14 @@ class Settings(BaseSettings):
     rerank_final_k: int = Field(
         default=8,
         description="重排序后的最终文档数量"
+    )
+    rerank_score_threshold: float = Field(
+        default=0.1,
+        description="重排序后的相关度分数阈值，高于此值才被采纳"
+    )
+    bm25_high_confidence_score: float = Field(
+        default=2.0,
+        description="BM25检索的置信度分数，高于此值则直接采纳，跳过Reranker"
     )
 
     # 增强检索配置
