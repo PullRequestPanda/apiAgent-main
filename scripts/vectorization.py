@@ -6,7 +6,7 @@ from loguru import logger
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.vector_store.vector_stores import VectorStoreManager
+from src.vectorize.vectorizer import VectorStoreManager
 from src.utils.llm_factory import LLMFactory
 
 def vectorize_apis(vsm: VectorStoreManager):

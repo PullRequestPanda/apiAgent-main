@@ -5,7 +5,7 @@ from typing import List, Tuple
 from langchain_core.documents import Document
 from loguru import logger
 
-from src.vector_store.vector_stores import VectorStoreManager
+from src.vectorize.vectorizer import VectorStoreManager
 from src.rerank.reranker import RerankerManager
 from config.settings import settings
 

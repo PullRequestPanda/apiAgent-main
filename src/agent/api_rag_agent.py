@@ -7,7 +7,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.documents import Document
 from loguru import logger
 
-from src.vector_store.vector_stores import VectorStoreManager
+from src.vectorize.vectorizer import VectorStoreManager
 from src.utils.llm_factory import LLMFactory
 from src.retrieval.api_retriever import ApiRetriever # Updated import
 

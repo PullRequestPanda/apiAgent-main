@@ -110,3 +110,48 @@
 2025-07-30 10:46:46.170 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
 2025-07-30 10:46:46.171 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交加班申请'，分数为: 0.6634
 2025-07-30 10:46:46.171 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交加班申请' 生成Groovy脚本。
+2025-07-30 13:04:52.567 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 13:04:52.567 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 13:04:52.567 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:04:52.571 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 13:04:52.891 | INFO     | src.vectorize.vectorizer:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 13:04:52.892 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 13:04:52.952 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 13:04:52.952 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:04:52.953 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 13:04:59.626 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 13:04:59.626 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 13:04:59.626 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:04:59.629 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 13:04:59.876 | INFO     | src.vectorize.vectorizer:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 13:04:59.876 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 13:04:59.922 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 13:04:59.923 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:04:59.924 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 13:05:39.513 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 13:05:39.513 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 13:05:39.513 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:05:39.518 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 13:05:39.771 | INFO     | src.vectorize.vectorizer:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 13:05:39.771 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 13:05:39.834 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 13:05:39.834 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:05:39.835 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 13:06:39.517 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 13:06:39.518 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 13:06:39.518 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:06:39.522 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 13:06:39.765 | INFO     | src.vectorize.vectorizer:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 13:06:39.765 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 13:06:39.825 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 13:06:39.825 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:06:39.826 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 13:07:25.065 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 13:07:25.065 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 13:07:25.065 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:07:25.068 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 13:07:25.369 | INFO     | src.vectorize.vectorizer:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 13:07:25.369 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 13:07:25.433 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 13:07:25.433 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 13:07:25.434 | INFO     | src.main:startup_event:90 - 服务初始化完成。
