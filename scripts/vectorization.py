@@ -2,6 +2,7 @@ from langchain_core.documents import Document
 import json
 import sys
 import os
+from loguru import logger
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -10,7 +11,7 @@ from src.utils.llm_factory import LLMFactory
 
 def vectorize_apis(vsm: VectorStoreManager):
     """读取api.json，向量化并存储单个API的信息"""
-    print("正在处理单个API的向量化...")
+    logger.info("正在处理单个API的向量化...")
     with open("data/api.json", "r", encoding="utf-8") as f:
         api_docs_data = json.load(f)
 
@@ -55,7 +56,7 @@ def vectorize_apis(vsm: VectorStoreManager):
         docs.append(Document(page_content=content, metadata=metadata))
     
     vsm.create_vector_store(docs, collection_name='api_docs')
-    print("单个API向量库[api_docs]创建/更新成功。")
+    logger.info("单个API向量库[api_docs]创建/更新成功。")
 
 if __name__ == "__main__":
     # 初始化向量存储管理器
@@ -65,4 +66,4 @@ if __name__ == "__main__":
     # 执行API向量化流程
     vectorize_apis(vsm)
 
-    print("\n所有向量化任务完成。")
+    logger.info("\n所有向量化任务完成。")

@@ -1,0 +1,71 @@
+[
+  {
+    "test_case_name": "信息完整 - 提交请假申请",
+    "request": {
+      "query": "我要提交请假申请",
+      "known_data": {
+        "userId": "s_123",
+        "userName": "张三",
+        "type": "SICK",
+        "fromDate": "2025-07-29",
+        "toDate": "2025-07-29",
+        "reason": "身体不适，需要休息一天"
+      }
+    }
+  },
+  {
+    "test_case_name": "信息部分缺失 - 提交请假申请",
+    "request": {
+      "query": "帮我请个年假",
+      "known_data": {
+        "userId": "s_456",
+        "userName": "李四",
+        "type": "ANNUAL",
+        "fromDate": "2025-08-01"
+      }
+    }
+  },
+  {
+    "test_case_name": "信息完全缺失 - 提交加班申请",
+    "request": {
+      "query": "提交加班申请",
+      "known_data": {}
+    }
+  },
+  {
+    "test_case_name": "包含非字符串参数 - 提交加班申请",
+    "request": {
+      "query": "提交加班申请",
+      "known_data": {
+        "userId": "s_123",
+        "overtimeDate": "2025-08-01",
+        "hours": 4,
+        "reason": "紧急线上问题修复",
+        "compensationWay": "PAY"
+      }
+    }
+  },
+  {
+    "test_case_name": "URL包含路径参数 - 获取员工信息",
+    "request": {
+      "query": "获取员工项目信息",
+      "known_data": {
+        "staffId": "s_789"
+      }
+    }
+  },
+  {
+    "test_case_name": "意图模糊但数据完整 - 提交请假申请",
+    "request": {
+      "query": "我明天想歇一天",
+      "known_data": {
+        "userId": "s_123",
+        "userName": "张三",
+        "type": "PERSONAL",
+        "fromDate": "2025-07-30",
+        "toDate": "2025-07-30",
+        "reason": "处理个人事务"
+      }
+    }
+  }
+]

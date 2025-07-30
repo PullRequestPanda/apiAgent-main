@@ -133,8 +133,20 @@ class Settings(BaseSettings):
         description="日志级别"
     )
     log_file: str = Field(
-        default="./logs/bidding_assistant.log",
+        default="./logs/app.log",
         description="日志文件路径"
+    )
+    log_rotation: str = Field(
+        default="10 MB",
+        description="日志文件回滚大小，例如: '500 MB', '10 MB', '1 week'"
+    )
+    log_retention: str = Field(
+        default="7 days",
+        description="日志文件保留时间，例如: '1 month', '7 days'"
+    )
+    log_format: str = Field(
+        default="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
+        description="日志输出格式"
     )
     
     class Config:

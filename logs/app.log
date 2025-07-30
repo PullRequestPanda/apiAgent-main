@@ -1,0 +1,112 @@
+2025-07-30 09:43:10.555 | INFO     | src.main:setup_logging:38 - 日志系统初始化完成。
+2025-07-30 09:43:10.555 | INFO     | src.main:startup_event:58 - 正在初始化服务，加载模型和数据...
+2025-07-30 09:43:10.555 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 09:43:10.559 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 09:43:10.915 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 09:43:10.915 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 09:43:10.968 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 09:43:10.969 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 09:43:10.970 | INFO     | src.main:startup_event:88 - 服务初始化完成。
+2025-07-30 09:43:19.967 | INFO     | src.main:create_plan:106 - 接收到原始请求: '帮我申请请假和加班并进行解锁并且查询一下用户的状态'，正在进行查询改写...
+2025-07-30 09:43:21.371 | INFO     | src.main:create_plan:108 - 改写后的查询: '首先获取我的员工信息，然后帮我提交请假和加班申请，同时执行用户状态查询和解锁操作。'
+2025-07-30 09:43:21.371 | INFO     | src.main:create_plan:110 - 调用TaskPlanner...
+2025-07-30 09:43:25.420 | INFO     | src.main:create_plan:118 - 成功生成任务规划: {'type': 'sequential', 'tasks': [{'api_name': '获取员工项目信息', 'description': '获取员工的基础信息，如项目和汇报对象。'}, {'type': 'parallel', 'tasks': [{'api_name': '提交请假申请', 'description': '提交员工的请假申请。'}, {'api_name': '提交加班申请', 'description': '提交员工的加班申请。'}, {'api_name': '查询用户状态', 'description': '检查用户的账号状态。'}, {'api_name': '解锁用户', 'description': '通过邮箱地址解锁被锁定的用户账号。'}]}]}
+2025-07-30 09:44:17.943 | INFO     | src.main:generate_api_call:135 - 接收到API调用生成请求: '第二步：通过邮箱地址解锁用户账号。'，调用ApiRagAgent...
+2025-07-30 09:44:20.255 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 09:44:20.256 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '解锁用户'，分数为: 0.5163
+2025-07-30 09:44:22.509 | INFO     | src.main:generate_api_call:142 - 成功生成API调用信息: {'description': '通过邮箱地址解锁一个被锁定的用户账号。', 'method': 'POST', 'url': '/api/v1/users/unlock', 'missing': [{'name': 'email', 'in': 'body', 'description': '需要解锁的用户的邮箱地址', 'required': True, 'type': 'string'}]}
+2025-07-30 09:49:11.047 | INFO     | src.main:setup_logging:38 - 日志系统初始化完成。
+2025-07-30 09:49:11.047 | INFO     | src.main:startup_event:58 - 正在初始化服务，加载模型和数据...
+2025-07-30 09:49:11.047 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 09:49:11.051 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 09:49:11.409 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 09:49:11.409 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 09:49:11.472 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 09:49:11.472 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 09:49:11.473 | INFO     | src.main:startup_event:88 - 服务初始化完成。
+2025-07-30 09:49:34.117 | INFO     | src.main:create_plan:106 - 接收到原始请求: '帮我申请请假和加班并进行解锁并且查询一下用户的状态'，正在进行查询改写...
+2025-07-30 09:49:35.746 | INFO     | src.main:create_plan:108 - 改写后的查询: '首先获取我的员工信息，然后帮我提交请假和加班申请，解锁相关操作，并查询我的用户状态。'
+2025-07-30 09:49:35.746 | INFO     | src.main:create_plan:110 - 调用TaskPlanner...
+2025-07-30 09:49:42.482 | INFO     | src.main:create_plan:118 - 成功生成任务规划: {'type': 'sequential', 'tasks': [{'api_name': '获取员工项目信息', 'description': '首先获取员工的基础信息，如项目、汇报对象等，以确保后续操作的合法性。'}, {'type': 'parallel', 'tasks': [{'api_name': '提交请假申请', 'description': '在获取员工信息后，提交员工的请假申请。'}, {'api_name': '提交加班申请', 'description': '在获取员工信息后，提交员工的加班申请。'}]}, {'api_name': '解锁用户', 'description': '根据需求执行用户解锁操作。'}, {'api_name': '查询用户状态', 'description': '检查用户的当前账号状态。'}]}
+2025-07-30 10:28:53.504 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:28:53.505 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:28:53.505 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:28:53.508 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:28:53.828 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:28:53.828 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:28:53.889 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:28:53.890 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:28:53.891 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:33:27.063 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:33:27.063 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:33:27.063 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:33:27.067 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:33:27.381 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:33:27.381 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:33:27.444 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:33:27.444 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:33:27.445 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:33:41.180 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'userId': 's_123', 'userName': '张三', 'type': 'SICK', 'fromDate': '2025-07-29', 'toDate': '2025-07-29', 'reason': '身体不适，需要休息一天'}
+2025-07-30 10:33:43.344 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:33:43.345 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:33:43.345 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:34:10.269 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'userId': 's_123', 'userName': '张三', 'type': 'SICK', 'fromDate': '2025-07-29', 'toDate': '2025-07-29', 'reason': '身体不适，需要休息一天'}
+2025-07-30 10:34:12.403 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:34:12.403 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:34:12.404 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:34:27.585 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'userId': 's_123', 'userName': '张三', 'type': 'SICK', 'fromDate': '2025-07-29', 'toDate': '2025-07-29', 'reason': '身体不适，需要休息一天'}
+2025-07-30 10:34:29.859 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:34:29.859 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:34:29.860 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:35:39.413 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:35:39.413 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:35:39.413 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:35:39.417 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:35:39.664 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:35:39.664 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:35:39.706 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:35:39.706 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:35:39.707 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:36:04.098 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:36:04.098 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:36:04.098 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:36:04.101 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:36:04.335 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:36:04.335 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:36:04.430 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:36:04.431 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:36:04.433 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:36:21.912 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'userId': 's_123', 'userName': '张三', 'type': 'SICK', 'fromDate': '2025-07-29', 'toDate': '2025-07-29', 'reason': '身体不适，需要休息一天'}
+2025-07-30 10:36:24.128 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:36:24.129 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:36:24.130 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:37:08.993 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:37:08.993 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:37:08.994 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:37:08.997 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:37:09.243 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:37:09.244 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:37:09.294 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:37:09.295 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:37:09.296 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:38:59.398 | INFO     | src.main:setup_logging:40 - 日志系统初始化完成。
+2025-07-30 10:38:59.398 | INFO     | src.main:startup_event:60 - 正在初始化服务，加载模型和数据...
+2025-07-30 10:38:59.398 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:38:59.402 | INFO     | src.utils.llm_factory:_create_dashscope_embeddings:124 - 创建阿里云通义嵌入模型: text-embedding-v3
+2025-07-30 10:38:59.646 | INFO     | src.vector_store.vector_stores:load_vector_store:79 - 向量存储加载成功，集合名称: api_docs
+2025-07-30 10:38:59.647 | INFO     | src.rerank.reranker:__init__:34 - 重排序管理器初始化成功，模型: gte-rerank-v2
+2025-07-30 10:38:59.698 | INFO     | src.retrieval.api_retriever:__init__:28 - ApiRetriever初始化成功。
+2025-07-30 10:38:59.698 | INFO     | src.utils.llm_factory:_create_dashscope_llm:107 - 创建阿里云通义千问LLM: qwen-plus-latest
+2025-07-30 10:38:59.700 | INFO     | src.main:startup_event:90 - 服务初始化完成。
+2025-07-30 10:39:03.450 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'userId': 's_123', 'userName': '张三', 'type': 'SICK', 'fromDate': '2025-07-29', 'toDate': '2025-07-29', 'reason': '身体不适，需要休息一天'}
+2025-07-30 10:39:05.734 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:39:05.735 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:39:05.735 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:46:15.893 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '我要提交请假申请'，已知数据: {'additionalProp1': {}}
+2025-07-30 10:46:18.221 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:46:18.222 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交请假申请'，分数为: 0.7986
+2025-07-30 10:46:18.222 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交请假申请' 生成Groovy脚本。
+2025-07-30 10:46:44.155 | INFO     | src.main:generate_groovy_script:160 - 接收到Groovy脚本生成请求: '交加班申请'，已知数据: {'additionalProp1': {}}
+2025-07-30 10:46:46.170 | INFO     | src.rerank.reranker:rerank_documents:102 - 重排序完成，返回 1 个文档
+2025-07-30 10:46:46.171 | INFO     | src.agent.api_rag_agent:_get_api_doc_from_retrieval:46 - 检索到最相关的API: '提交加班申请'，分数为: 0.6634
+2025-07-30 10:46:46.171 | INFO     | src.main:generate_groovy_script:171 - 成功为API '提交加班申请' 生成Groovy脚本。

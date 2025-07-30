@@ -7,3 +7,4 @@ langchain-core
 chromadb
 tenacity
 dashscope
+loguru
